@@ -26,9 +26,13 @@ const galleryMarkup = galleryItems.map(createGalleryItemMarkup).join('');
 galleryList.insertAdjacentHTML('afterbegin', galleryMarkup);
 
 console.log(galleryMarkup);
-const galleryItem = document.querySelector('gallery');
+const galleryItem = document.querySelector('.gallery');
 galleryItem.addEventListener('click', ongalleryItemClick);
 
-function ongalleryItemClick() {
+function ongalleryItemClick(evt) {
+  if (!evt.target.classList.contains('gallery__item')) {
+    return;
+  }
+  evt.preventDefault();
   instance.show();
 }
